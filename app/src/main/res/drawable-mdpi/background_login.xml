@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:startColor="#D6E9FC"
+        android:endColor="#EDF3F3"
+        android:angle="270"/>
+    <!-- //内间距 -->
+    <padding android:left="7dp"
+        android:top="7dp"
+        android:right="7dp"
+        android:bottom="7dp" />
+    <!-- //圆角的大小 -->
+    <corners android:radius="8dp" />
+    <!-- //边界线,宽度2个像素,颜色:#FFFFFF,虚线的间隔线8个像素,间隔,也就是没有颜色的空隙
+    //是2个像素 -->
+
+</shape>

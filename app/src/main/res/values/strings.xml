@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">sakai</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_main_menu">MainMenu</string>
+    <string name="title_activity_course_menu">CourseMenu</string>
+    <string name="title_activity_announcement">Announcement</string>
+    <string name="title_activity_assignment">Assignment</string>
+    <string name="title_activity_gradebook">Gradebook</string>
+    <string name="title_activity_announcement_context">AnnouncementContext</string>
+    <string name="title_activity_assignment_detail">AssignmentDetail</string>
+
+</resources>
