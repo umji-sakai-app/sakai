@@ -94,7 +94,7 @@ public class MainMenu extends Activity {
 			httpResponse = MainActivity.httpclient.execute(httpRequest);    //get json
 			if(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
 				result = EntityUtils.toString(httpResponse.getEntity(), "utf-8");    //json string  //add "utf-8"
-				Log.d("hahaha","yes");
+				Log.d("MainMenu","loadTheJsonForCourseMenu");
 
 			}
 			else{
@@ -153,7 +153,7 @@ public class MainMenu extends Activity {
 				title[i] = data.getString("title");
 				ID[i] = data.getString("entityId");
 
-				if(title[i].contains("SU2015") || title[i].contains("Current Student")){
+				if(title[i].contains("FA2015") || title[i].contains("Current Student")){
 					CurrentTitleIterator.add(title[i]);
 					//System.out.println(CurrentTitle[j]);
 					CurrentIDIterator.add(ID[i]);
