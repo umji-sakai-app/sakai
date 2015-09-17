@@ -1,6 +1,12 @@
 package com.example.sakai;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -20,6 +26,7 @@ import org.json.JSONObject;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -37,6 +44,8 @@ import android.widget.ListView;
 
 public class MainMenu extends Activity {
 
+    private boolean MainMenuJsonFile = false;
+    private String MainMenuJsonFileName = "MainMenuJson";
 	private String result = null;
 	private String[] title, ID;
 //	private String[] CurrentTitle, CurrentID,RestTitle, RestID;
@@ -87,31 +96,74 @@ public class MainMenu extends Activity {
 	}
 
 	private void access(){
-		String target = "http://202.120.46.147/direct/site.json";
-		HttpGet httpRequest = new HttpGet(target);  // load the json
-		HttpResponse httpResponse;
-		try {
-			httpResponse = MainActivity.httpclient.execute(httpRequest);    //get json
-			if(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
-				result = EntityUtils.toString(httpResponse.getEntity(), "utf-8");    //json string  //add "utf-8"
-				Log.d("MainMenu","loadTheJsonForCourseMenu");
+        if(!MainMenuJsonFile) {
+            String target = "http://202.120.46.147/direct/site.json";
+            HttpGet httpRequest = new HttpGet(target);  // load the json
+            HttpResponse httpResponse;
+            try {
+                httpResponse = MainActivity.httpclient.execute(httpRequest);    //get json
+                if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                    result = EntityUtils.toString(httpResponse.getEntity(), "utf-8");    //json string  //add "utf-8"
+                    FileOutputStream out = null;    // write the json string into the file. After that read the json string from the file.
+                    BufferedWriter writer = null;
+                    try{
+                        out = openFileOutput(MainMenuJsonFileName, Context.MODE_PRIVATE);
+                        writer = new BufferedWriter(new OutputStreamWriter(out));
+                        writer.write(result);
+                    }catch (IOException e){
+                        e.printStackTrace();
+                    }finally {
+                        try {
+                            if (writer != null) {
+                                writer.close();
+                            }
+                        }catch (IOException e){
+                            e.printStackTrace();
+                        }
+                        MainMenuJsonFile = true;
+                    }
+                    Log.d("MainMenu", "successfully load the json string into files");
 
-			}
-			else{
-				result = "fail to access";
-				Log.d("hahaha","no");
-			}
+                } else {
+                    result = "fail to access";
+                    Log.d("hahaha", "no");
+                }
 
-			Log.d("ACTIVITY_TAG","succeed");
-		} catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			Log.d("ACTIVITY_TAG","unhappy");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			Log.d("ACTIVITY_TAG","unhappy");
-		}
+                Log.d("ACTIVITY_TAG", "succeed");
+            } catch (ClientProtocolException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                Log.d("ACTIVITY_TAG", "unhappy");
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                Log.d("ACTIVITY_TAG", "unhappy");
+            }
+        }else{
+            FileInputStream in = null;
+            BufferedReader reader = null;
+            StringBuilder content = new StringBuilder();
+            try{
+                in = openFileInput(MainMenuJsonFileName);
+                reader = new BufferedReader(new InputStreamReader(in));
+                String line = "";
+                while((line = reader.readLine()) != null){
+                    content.append(line);
+                }
+            }catch (IOException e){
+                e.printStackTrace();
+            }finally{
+                if(reader != null){
+                    try{
+                        reader.close();
+                    }catch (IOException e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+            result = content.toString();
+            Log.d("MainMenu", "successfully read the json string from the file");
+        }
 
 	}
 
@@ -153,7 +205,8 @@ public class MainMenu extends Activity {
 				title[i] = data.getString("title");
 				ID[i] = data.getString("entityId");
 
-				if(title[i].contains("FA2015") || title[i].contains("Current Student")){
+				if(title[i].contains("FA2015") || title[i].contains("Current Student") || title[i].contains("Scholarship and Awards")
+                        || title[i].contains("JI Career")){
 					CurrentTitleIterator.add(title[i]);
 					//System.out.println(CurrentTitle[j]);
 					CurrentIDIterator.add(ID[i]);

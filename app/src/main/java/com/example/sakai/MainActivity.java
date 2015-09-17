@@ -32,10 +32,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 public class MainActivity extends Activity {
 
 	private String result;
 	private Handler handler;
+
 	private String username;
 	private String password;
 	public static HttpClient httpclient;
@@ -44,6 +46,7 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
 		final HttpClient httpclient = new DefaultHttpClient();
 		Button signin = (Button)this.findViewById(R.id.signin);
 		final EditText usn = (EditText)this.findViewById(R.id.username_edit);

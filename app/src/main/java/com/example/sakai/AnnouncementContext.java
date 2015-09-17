@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,6 +29,9 @@ public class AnnouncementContext extends Activity {
         TextView textBody = (TextView)findViewById(R.id.announcement_context_body);
         Spanned tbody = Html.fromHtml(body);
         textBody.setText(tbody);
+
+        textBody.setMovementMethod(LinkMovementMethod.getInstance());
+
         if(attachName != "0") {
             TextView textAttach = (TextView) findViewById(R.id.announcement_context_download);
             textAttach.setText("\n\n"+attachName);
