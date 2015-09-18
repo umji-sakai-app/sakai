@@ -18,18 +18,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9d9a487c-d8bc-4c1d-a1f1-28919b3194c4" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\11\Documents\2015 Summer\Sakai_with_git\sakai\.idea\libraries\support_v4_19_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\11\Documents\2015 Summer\Sakai_with_git\sakai\app\build\generated\source\buildConfig\androidTest\debug\com\example\sakai\test\BuildConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\11\Documents\2015 Summer\Sakai_with_git\sakai\app\build\intermediates\resources\resources-debug-androidTest.ap_" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/model_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/model_data.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/resources/resources-debug.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/resources/resources-debug.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/sakai/Announcement.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/sakai/Announcement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/sakai/AnnouncementContext.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/sakai/AnnouncementContext.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/sakai/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/sakai/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/sakai/MainMenu.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/sakai/MainMenu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_announcement_context.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_announcement_context.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="sakai.iws" />
@@ -1597,7 +1585,11 @@
       <created>1442455224554</created>
       <updated>1442455224554</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fix the bug in announcement context.&#10;Update the courses, and add JI Career and Scholarship and Awards">
+      <created>1442467990563</created>
+      <updated>1442467990563</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1682,7 +1674,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="change log" />
-    <option name="LAST_COMMIT_MESSAGE" value="change log" />
+    <MESSAGE value="Fix the bug in announcement context.&#10;Update the courses, and add JI Career and Scholarship and Awards" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix the bug in announcement context.&#10;Update the courses, and add JI Career and Scholarship and Awards" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
