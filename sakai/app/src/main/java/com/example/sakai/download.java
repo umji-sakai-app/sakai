@@ -1,14 +1,24 @@
 package com.example.sakai;
 
 import android.app.IntentService;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.Context;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
+import android.widget.Toast;
 
 import org.apache.http.Header;
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -63,30 +73,60 @@ public class download extends IntentService {
     public download() {
         super("download");
     }
-
+    String download_status;
     @Override
     protected void onHandleIntent(Intent intent) {
+
         String target = intent.getStringExtra("url");
         String name = intent.getStringExtra("name");
         HttpGet httpget = new HttpGet(target);
-        try {
-            HttpResponse httpresponse = MainActivity.httpclient.execute(httpget);
-            if(httpresponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
-                String path = "sakai/"+name;
-                FileOutputStream output = this.openFileOutput(name, this.MODE_APPEND);
-                InputStream input = httpresponse.getEntity().getContent();
+        File extDir = Environment.getExternalStorageDirectory();
+        File dir = new File(extDir,name);
+        if(dir.exists() == false) {
+            try {
+                HttpResponse response = MainActivity.httpclient.execute(httpget);
+                InputStream in = response.getEntity().getContent();
+                dir.createNewFile();
+                dir.setWritable(Boolean.TRUE);
+                FileOutputStream out = new FileOutputStream(dir);
                 byte[] b = new byte[1024];
-                int j;
-                while((j = input.read(b)) != -1){
-                    output.write(b,0,j);
+                int len = 0;
+                while ((len = in.read(b)) != -1) {
+                    out.write(b, 0, len);
                 }
-                output.flush();
-                output.close();
-                System.out.println("can download");
+                in.close();
+                out.close();
+                Log.d("ACTIVITY_TAG", "download");
+                download_status = "download succeed";
+                NotificationManager nm = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+                Notification.Builder n = new Notification.Builder(getApplicationContext())
+                        .setContentText(name+" "+download_status)
+                        .setContentTitle("sakai")
+                        .setTicker("sakai")
+                        .setWhen(System.currentTimeMillis())
+                        .setVibrate(new long[] {0,300,500,700})
+                        .setSmallIcon(R.drawable.icon);
+                nm.notify(1, n.build());
+            } catch (ClientProtocolException e) {
+                e.printStackTrace();
+                download_status = "download fail";
+            } catch (IOException e) {
+                e.printStackTrace();
+                download_status = "download fail";
+            } finally {
+
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+        else{
+            download_status = "file existed";
+        }
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getApplicationContext(),download_status,Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
