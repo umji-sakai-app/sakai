@@ -2,6 +2,8 @@ package com.example.sakai;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,6 +15,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.regex.Pattern;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -228,6 +231,26 @@ public class MainMenu extends Activity {
 		handler.sendMessage(message);
 	}
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
+//        deleteFile()
+        Log.d("Destroy", getFilesDir().getAbsolutePath());
+//        File f = new File(Environment.getDataDirectory().getAbsolutePath());
+        File f = new File(getFilesDir().getAbsolutePath());
+        final Pattern p = Pattern.compile(".*File");
+        File[] fileLists = f.listFiles(new FileFilter() {
+            @Override
+            public boolean accept(File file) {
+                return p.matcher(file.getName()).matches();
+            }
+        });
+        Log.d("Destroy",  "The array length: " + Integer.toString(fileLists.length));
+        for(int i = 0; i < fileLists.length; i++){
+            Log.d("delete",fileLists[i].getName() + "is deleted");
+            fileLists[i].delete();
+        }
+    }
 }
 

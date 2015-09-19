@@ -111,25 +111,25 @@ public class MainActivity extends Activity {
 		}
 	}
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-//        deleteFile()
-        Log.d("Destroy", getFilesDir().getAbsolutePath());
-//        File f = new File(Environment.getDataDirectory().getAbsolutePath());
-        File f = new File(getFilesDir().getAbsolutePath());
-        final Pattern p = Pattern.compile(".*File");
-        File[] fileLists = f.listFiles(new FileFilter() {
-            @Override
-            public boolean accept(File file) {
-                return p.matcher(file.getName()).matches();
-            }
-        });
-        Log.d("Destroy",  "The array length: " + Integer.toString(fileLists.length));
-        for(int i = 0; i < fileLists.length; i++){
-            Log.d("delete",fileLists[i].getName() + "is deleted");
-                fileLists[i].delete();
-        }
-    }
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//
+////        deleteFile()
+//        Log.d("Destroy", getFilesDir().getAbsolutePath());
+////        File f = new File(Environment.getDataDirectory().getAbsolutePath());
+//        File f = new File(getFilesDir().getAbsolutePath());
+//        final Pattern p = Pattern.compile(".*File");
+//        File[] fileLists = f.listFiles(new FileFilter() {
+//            @Override
+//            public boolean accept(File file) {
+//                return p.matcher(file.getName()).matches();
+//            }
+//        });
+//        Log.d("Destroy",  "The array length: " + Integer.toString(fileLists.length));
+//        for(int i = 0; i < fileLists.length; i++){
+//            Log.d("delete",fileLists[i].getName() + "is deleted");
+//                fileLists[i].delete();
+//        }
+//    }
 }
