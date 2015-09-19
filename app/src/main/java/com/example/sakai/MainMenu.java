@@ -96,7 +96,7 @@ public class MainMenu extends Activity {
 	}
 
 	private void access(){
-        if(!MainMenuJsonFile) {
+        if(!MainMenuJsonFile) { //This way is not good. Change
             String target = "http://202.120.46.147/direct/site.json";
             HttpGet httpRequest = new HttpGet(target);  // load the json
             HttpResponse httpResponse;
