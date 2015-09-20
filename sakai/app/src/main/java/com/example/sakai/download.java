@@ -3,8 +3,10 @@ package com.example.sakai;
 import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
@@ -106,6 +108,11 @@ public class download extends IntentService {
                         .setWhen(System.currentTimeMillis())
                         .setVibrate(new long[] {0,300,500,700})
                         .setSmallIcon(R.drawable.icon);
+                Intent intentOpen;
+                intentOpen = getPdfFileIntent("sdcard/"+name);
+                intentOpen.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intentOpen, 0);
+                n.setContentIntent(pendingIntent);
                 nm.notify(1, n.build());
             } catch (ClientProtocolException e) {
                 e.printStackTrace();
@@ -128,6 +135,7 @@ public class download extends IntentService {
             }
         });
 
+
     }
 
     /**
@@ -147,4 +155,14 @@ public class download extends IntentService {
         // TODO: Handle action Baz
         throw new UnsupportedOperationException("Not yet implemented");
     }
+    public static Intent getPdfFileIntent( String param )
+    {
+        Intent intent = new Intent("android.intent.action.VIEW");
+        intent.addCategory("android.intent.category.DEFAULT");
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Uri uri = Uri.fromFile(new File(param));
+        intent.setDataAndType(uri,"application/pdf");
+        return intent;
+    }
+
 }
