@@ -35,13 +35,11 @@ import java.util.List;
 import java.util.ListIterator;
 
 
-public class Announcement extends Activity {
+public class Announcement extends MethodActivity {
     private String announcementTitle[];
     private String announcementBody[];
     private Handler handler;
     private String ID;
-//    private String title;
-//    private boolean AnnouncementFileFlag = false;
     private String attachmentURL[], attachmentTitle[];
     private String result = null;
 
@@ -52,7 +50,6 @@ public class Announcement extends Activity {
         setContentView(R.layout.activity_announcement);
         Intent intent = getIntent();
         ID = intent.getStringExtra("id");
-//        title = intent.getStringExtra("title");
         new Thread(new Runnable(){
             public void run(){
                 getAnnouncement();
@@ -112,83 +109,8 @@ public class Announcement extends Activity {
 
     //get announcement from sakai
     public void getAnnouncement(){
-
-
-
-            FileInputStream in = null;
-            BufferedReader reader = null;
-            StringBuilder content = new StringBuilder();
-            try{
-                File file = new File(getFilesDir().getAbsolutePath(),ID+"AnnouncementJsonFile");
-//                Log.d("Announcement", file.exists() ? "exist":"not exist");
-                if (file.exists()){
-                    Log.d("Announcement", "exist");
-                }
-                else{
-                    Log.d("Announcement", "non-exist");
-                }
-                in = openFileInput(ID+"AnnouncementJsonFile");
-                reader = new BufferedReader(new InputStreamReader(in));
-                String line = "";
-                while((line = reader.readLine()) != null){
-                    content.append(line);
-                }
-                result = content.toString();
-                reader.close();
-                Log.d("Announcement", "successfully read the json string from the file");
-            }catch (IOException e){
-//                e.printStackTrace();
-                String target = "http://202.120.46.147/direct/announcement/site/" + ID + ".json?n=40&d=21";
-                HttpGet httpRequest = new HttpGet(target);
-                HttpResponse httpresponse;
-                try {
-                    httpresponse = MainActivity.httpclient.execute(httpRequest);
-                    if (httpresponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-                        result = EntityUtils.toString(httpresponse.getEntity(), "utf-8");    //json string  //add "utf-8"
-                        FileOutputStream out = null;    // write the json string into the file. After that read the json string from the file.
-                        BufferedWriter writer = null;
-                        try{
-                            out = openFileOutput(ID + "AnnouncementJsonFile", Context.MODE_PRIVATE);
-                            Log.d("Announcement", "out info: " + out.toString() + "   The file name is" + ID + "AnnouncementJsonFile");
-//                            Log.d("Announcement", wri)
-                            writer = new BufferedWriter(new OutputStreamWriter(out));
-                            writer.write(result);
-                        }catch (IOException a){
-                            a.printStackTrace();
-                        }finally {
-                            try {
-                                if (writer != null) {
-                                    writer.close();
-                                }
-                            }catch (IOException b){
-                                b.printStackTrace();
-                            }
-//                        AnnouncementFileFlag = true;
-                        }
-                        Log.d("Announcement", "successfully load the json string into files");
-
-                        Log.d("Announcement", "yes");
-
-                    } else {
-                        result = "fail to access";
-                        Log.d("Announcement", "no");
-                    }
-                } catch (IOException c) {
-                    c.printStackTrace();
-                }
-                System.out.println("http");
-
-            }finally{
-                if(reader != null){
-                    try{
-                        reader.close();
-                    }catch (IOException e){
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-
+        String target = "http://202.120.46.147/direct/announcement/site/" + ID + ".json?n=40&d=21";
+        result = accessJson(ID, "Announcement", target);
     }
 
     //handle the json file we get. Giving value to announcementTitle, announcementBody,attachmentURL[], attachmentTitle[] and nnouncementTitle_list.
@@ -218,7 +140,6 @@ public class Announcement extends Activity {
                 announcementTitle[i] = data.getString("title");
                 announcementTitle_list_iterator.add(data.getString("title"));
                 announcementBody[i] = data.getString("body");
-                //JSONArray attachment = data.getJSONArray("attachment");
 
                 if(data.isNull("attachments") == true){
                     attachmentTitle[i] = "0";

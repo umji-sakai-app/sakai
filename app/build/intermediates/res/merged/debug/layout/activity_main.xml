@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@drawable/background_login">
+  <!-- padding 内边距   layout_margin 外边距
+  		android:layout_alignParentTop 布局的位置是否处于顶部 -->
+    <ImageView android:src="@drawable/logo"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        />
+  <RelativeLayout 
+  	android:id="@+id/login_div"
+  	android:layout_width="fill_parent"
+  	android:layout_height="wrap_content"
+  	android:padding="15dip"        
+  	android:layout_marginLeft="15dip"
+      android:layout_marginRight="15dip"
+  	>
+  	<!-- 账号 -->
+  	<TextView 
+  		android:id="@+id/login_user_input"
+  		android:layout_width="wrap_content"
+  		android:layout_height="wrap_content"
+  		android:layout_alignParentTop="true"
+  		android:layout_marginTop="5dp"
+  		android:text="username"
+        android:textColor="#04477c"
+  		style="@android:style/TextAppearance"/>
+  	<EditText 
+  		android:id="@+id/username_edit"
+  		android:layout_width="fill_parent"
+  		android:layout_height="wrap_content"
+  		android:hint="Student ID"
+        android:textColor="#000000"
+  		android:layout_below="@id/login_user_input"
+  		android:singleLine="true"
+  		android:inputType="text"/>
+    <!-- 密码 text -->
+    <TextView 
+    	android:id="@+id/login_password_input"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_below="@id/username_edit"
+    	android:layout_marginTop="20dp"
+    	android:text="password"
+        android:textColor="#04477c"
+    	style="@style/normalText"/>
+    <EditText
+    	android:id="@+id/password_edit"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_below="@id/login_password_input"
+    	android:password="true"
+    	android:singleLine="true"
+        android:hint="Password"
+    	android:inputType="textPassword"
+    />
+    <!-- 登录button -->
+    <Button 
+    	android:id="@+id/signin"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_below="@id/password_edit"
+    	android:layout_alignRight="@id/password_edit"
+    	android:text="sign in"
+        android:textColor="#ffffff"
+    	android:background="@drawable/icon3"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+    />
+  </RelativeLayout>
+</LinearLayout>
+<!-- From: file:/C:/Users/11/Documents/2015%20Summer/Sakai_with_git/sakai/app/src/main/res/layout/activity_main.xml -->

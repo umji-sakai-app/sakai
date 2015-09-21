@@ -45,13 +45,12 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
-public class MainMenu extends Activity {
+public class MainMenu extends MethodActivity {
 
     private boolean MainMenuJsonFile = false;
     private String MainMenuJsonFileName = "MainMenuJsonFile";
 	private String result = null;
 	private String[] title, ID;
-//	private String[] CurrentTitle, CurrentID,RestTitle, RestID;
 	private Handler handler;
 
 	@Override
@@ -99,156 +98,13 @@ public class MainMenu extends Activity {
 	}
 
 	private void access(){
-
-        FileInputStream in = null;
-        BufferedReader reader = null;
-        StringBuilder content = new StringBuilder();
-        try{
-            File file = new File(getFilesDir().getAbsolutePath(),MainMenuJsonFileName);
-//                Log.d("Announcement", file.exists() ? "exist":"not exist");
-            if (file.exists()){
-                Log.d("MainMenu", "exist");
-            }
-            else{
-                Log.d("MainMenu", "non-exist");
-            }
-            in = openFileInput(MainMenuJsonFileName);
-            reader = new BufferedReader(new InputStreamReader(in));
-            String line = "";
-            while((line = reader.readLine()) != null){
-                content.append(line);
-            }
-            result = content.toString();
-            reader.close();
-            Log.d("MainMenu", "successfully read the json string from the file");
-        }catch (IOException e){
-//                e.printStackTrace();
-            String target = "http://202.120.46.147/direct/site.json";
-            HttpGet httpRequest = new HttpGet(target);
-            HttpResponse httpresponse;
-            try {
-                httpresponse = MainActivity.httpclient.execute(httpRequest);
-                if (httpresponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-                    result = EntityUtils.toString(httpresponse.getEntity(), "utf-8");    //json string  //add "utf-8"
-                    FileOutputStream out = null;    // write the json string into the file. After that read the json string from the file.
-                    BufferedWriter writer = null;
-                    try{
-                        out = openFileOutput(MainMenuJsonFileName, Context.MODE_PRIVATE);
-//                        Log.d("MainMenu", "out info: " + out.toString() + "   The file name is" + ID + "AnnouncementJsonFile");
-//                            Log.d("Announcement", wri)
-                        writer = new BufferedWriter(new OutputStreamWriter(out));
-                        writer.write(result);
-                    }catch (IOException a){
-                        a.printStackTrace();
-                    }finally {
-                        try {
-                            if (writer != null) {
-                                writer.close();
-                            }
-                        }catch (IOException b){
-                            b.printStackTrace();
-                        }
-//                        AnnouncementFileFlag = true;
-                    }
-                    Log.d("MainMenu", "successfully load the json string into files");
-
-                    Log.d("MainMenu", "yes");
-
-                } else {
-                    result = "fail to access";
-                    Log.d("MainMenu", "no");
-                }
-            } catch (IOException c) {
-                c.printStackTrace();
-            }
-//            System.out.println("http");
-
-        }finally{
-            if(reader != null){
-                try{
-                    reader.close();
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
-            }
-        }
-
-//        if(!MainMenuJsonFile) { //This way is not good. Change
-//            String target = "http://202.120.46.147/direct/site.json";
-//            HttpGet httpRequest = new HttpGet(target);  // load the json
-//            HttpResponse httpResponse;
-//            try {
-//                httpResponse = MainActivity.httpclient.execute(httpRequest);    //get json
-//                if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-//                    result = EntityUtils.toString(httpResponse.getEntity(), "utf-8");    //json string  //add "utf-8"
-//                    FileOutputStream out = null;    // write the json string into the file. After that read the json string from the file.
-//                    BufferedWriter writer = null;
-//                    try{
-//                        out = openFileOutput(MainMenuJsonFileName, Context.MODE_PRIVATE);
-//                        writer = new BufferedWriter(new OutputStreamWriter(out));
-//                        writer.write(result);
-//                    }catch (IOException e){
-//                        e.printStackTrace();
-//                    }finally {
-//                        try {
-//                            if (writer != null) {
-//                                writer.close();
-//                            }
-//                        }catch (IOException e){
-//                            e.printStackTrace();
-//                        }
-//                        MainMenuJsonFile = true;
-//                    }
-//                    Log.d("MainMenu", "successfully load the json string into files");
-//
-//                } else {
-//                    result = "fail to access";
-//                    Log.d("hahaha", "no");
-//                }
-//
-//                Log.d("ACTIVITY_TAG", "succeed");
-//            } catch (ClientProtocolException e) {
-//                // TODO Auto-generated catch block
-//                e.printStackTrace();
-//                Log.d("ACTIVITY_TAG", "unhappy");
-//            } catch (IOException e) {
-//                // TODO Auto-generated catch block
-//                e.printStackTrace();
-//                Log.d("ACTIVITY_TAG", "unhappy");
-//            }
-//        }else{
-//            FileInputStream in = null;
-//            BufferedReader reader = null;
-//            StringBuilder content = new StringBuilder();
-//            try{
-//                in = openFileInput(MainMenuJsonFileName);
-//                reader = new BufferedReader(new InputStreamReader(in));
-//                String line = "";
-//                while((line = reader.readLine()) != null){
-//                    content.append(line);
-//                }
-//            }catch (IOException e){
-//                e.printStackTrace();
-//            }finally{
-//                if(reader != null){
-//                    try{
-//                        reader.close();
-//                    }catch (IOException e){
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//            result = content.toString();
-//            Log.d("MainMenu", "successfully read the json string from the file");
-//        }
-
+		String target = "http://202.120.46.147/direct/site.json";
+		result = accessJson("", "MainMenu", target);
 	}
 
 	 private void JSONHandler() {
 		JSONObject jsonObject = null;
 		JSONArray site_collection = null;
-		JSONObject info = null; // never used
-
 
 		try {
 			jsonObject = new JSONObject(result);
@@ -283,9 +139,8 @@ public class MainMenu extends Activity {
 				ID[i] = data.getString("entityId");
 
 				if(title[i].contains("FA2015") || title[i].contains("Current Student") || title[i].contains("Scholarship and Awards")
-                        || title[i].contains("JI Career")){
+                        || title[i].contains("JI Career") || title[i].contains("sakai app")){
 					CurrentTitleIterator.add(title[i]);
-					//System.out.println(CurrentTitle[j]);
 					CurrentIDIterator.add(ID[i]);
 				}else{
 					RestTitleIterator.add(title[i]);
@@ -300,18 +155,16 @@ public class MainMenu extends Activity {
 		Message message = handler.obtainMessage();
 		List<String> ShowedList = new ArrayList<String>();
 		ShowedList.addAll(CurrentTitle);
-//		ShowedList.addAll(RestTitle);
 		message.obj = ShowedList;
 		handler.sendMessage(message);
 	}
 
     @Override
-    protected void onDestroy() {
+	protected void onDestroy() {
         super.onDestroy();
 
 //        deleteFile()
         Log.d("Destroy", getFilesDir().getAbsolutePath());
-//        File f = new File(Environment.getDataDirectory().getAbsolutePath());
         File f = new File(getFilesDir().getAbsolutePath());
         final Pattern p = Pattern.compile(".*File");
         File[] fileLists = f.listFiles(new FileFilter() {

@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 
-public class Assignment extends Activity {
+public class Assignment extends MethodActivity {
 
     private String ID;
     private Handler handler;
@@ -102,30 +102,7 @@ public class Assignment extends Activity {
     void go(){
         String target = "http://202.120.46.147/direct/assignment/site/"+ID+".json";
         String result=null;
-        HttpGet httpRequest = new HttpGet(target);  // load the json
-        HttpResponse httpResponse;
-        try {
-            httpResponse = MainActivity.httpclient.execute(httpRequest);    //Use the MainActivity's httpClient to get the json, which has logged in.
-            if(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
-                result = EntityUtils.toString(httpResponse.getEntity(), "utf-8");    //json string  //add "utf-8"
-                Log.d("hahaha", "yes");
-
-            }
-            else{
-                result = "fail to access";
-                Log.d("hahaha","no");
-            }
-
-            Log.d("ACTIVITY_TAG","succeed");
-        } catch (ClientProtocolException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            Log.d("ACTIVITY_TAG","unhappy");
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            Log.d("ACTIVITY_TAG","unhappy");
-        }
+        result = accessJson(ID, "Assignment", target);
 
         JSONObject jsonObject = null;
         JSONArray assignmentArray = null;

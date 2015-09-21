@@ -1,6 +1,7 @@
 package com.example.sakai;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,11 +23,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.List;
 
 
-public class Gradebook extends Activity {
+public class Gradebook extends MethodActivity {
     private String ID;
     private Handler handler;
 
@@ -79,32 +87,9 @@ public class Gradebook extends Activity {
     }
 
     void go(){
+        String result = null;
         String target = "http://202.120.46.147/direct/gradebook/site/"+ID+".json";
-        String result=null;
-        HttpGet httpRequest = new HttpGet(target);  // load the json
-        HttpResponse httpResponse;
-        try {
-            httpResponse = MainActivity.httpclient.execute(httpRequest);    //Use the MainActivity's httpClient to get the json, which has logged in.
-            if(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
-                result = EntityUtils.toString(httpResponse.getEntity(), "utf-8");    //json string  //add "utf-8"
-                Log.d("hahaha", "yes");
-
-            }
-            else{
-                result = "fail to access";
-                Log.d("hahaha","no");
-            }
-
-            Log.d("ACTIVITY_TAG","succeed");
-        } catch (ClientProtocolException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            Log.d("ACTIVITY_TAG","unhappy");
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            Log.d("ACTIVITY_TAG","unhappy");
-        }
+        result = accessJson(ID, "Gradebook", target);
 
         JSONObject jsonObject = null;
         JSONArray gradeArray = null;
