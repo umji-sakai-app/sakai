@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.sakai"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="18" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <android:uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.sakai.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.sakai.MainMenu"
+            android:label="@string/title_activity_main_menu" >
+        </activity>
+        <!-- <activity android:name=".AddWebView" -->
+        <!-- android:label="webView"></activity> -->
+        <activity
+            android:name="com.example.sakai.CourseMenu"
+            android:label="@string/title_activity_course_menu" >
+        </activity>
+        <activity
+            android:name="com.example.sakai.Announcement"
+            android:label="@string/title_activity_announcement" >
+        </activity>
+        <activity
+            android:name="com.example.sakai.Assignment"
+            android:label="@string/title_activity_assignment" >
+        </activity>
+        <activity
+            android:name="com.example.sakai.Gradebook"
+            android:label="@string/title_activity_gradebook" >
+        </activity>
+        <activity
+            android:name="com.example.sakai.AnnouncementContext"
+            android:label="@string/title_activity_announcement_context" >
+        </activity>
+
+        <service
+            android:name="com.example.sakai.download"
+            android:exported="false" >
+        </service>
+
+        <activity
+            android:name="com.example.sakai.AssignmentDetail"
+            android:label="@string/title_activity_assignment_detail" >
+        </activity>
+
+        <service
+            android:name="com.example.sakai.PollService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+
+        <receiver
+            android:name="com.example.sakai.PollReceiver"
+            android:enabled="true"
+            android:exported="true" >
+        </receiver>
+    </application>
+
+</manifest>

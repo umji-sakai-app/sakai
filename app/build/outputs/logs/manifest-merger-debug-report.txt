@@ -1,0 +1,135 @@
+-- Merging decision tree log ---
+manifest
+ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:2:1-85:12
+	package
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:3:5-32
+		INJECTED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml
+		INJECTED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml
+	android:versionName
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:5:5-30
+	android:versionCode
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:4:5-28
+		INJECTED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml
+		INJECTED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:2:11-69
+uses-sdk
+ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:7:5-9:41
+	android:targetSdkVersion
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:9:9-38
+		INJECTED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml
+		INJECTED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:8:9-34
+		INJECTED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml
+		INJECTED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:11:5-67
+	android:name
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:11:22-64
+android:uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:13:5-15:38
+	android:maxSdkVersion
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:15:9-35
+	android:name
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:14:9-65
+android:uses-permission#android.permission.READ_PHONE_STATE
+ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:16:5-83
+	android:name
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:16:30-80
+android:uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:17:5-19:38
+	android:maxSdkVersion
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:19:9-35
+	android:name
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:18:9-64
+application
+ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:21:5-83:19
+	android:label
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:24:9-41
+	android:allowBackup
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:22:9-35
+	android:icon
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:23:9-45
+	android:theme
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:25:9-40
+activity#com.example.sakai.MainActivity
+ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:26:9-34:20
+	android:label
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:28:13-45
+	android:name
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:27:13-41
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:29:13-33:29
+action#android.intent.action.MAIN
+ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:30:17-69
+	android:name
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:30:25-66
+category#android.intent.category.LAUNCHER
+ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:32:17-77
+	android:name
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:32:27-74
+activity#com.example.sakai.MainMenu
+ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:35:9-38:20
+	android:label
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:37:13-61
+	android:name
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:36:13-37
+activity#com.example.sakai.CourseMenu
+ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:41:9-44:20
+	android:label
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:43:13-63
+	android:name
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:42:13-39
+activity#com.example.sakai.Announcement
+ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:45:9-48:20
+	android:label
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:47:13-64
+	android:name
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:46:13-41
+activity#com.example.sakai.Assignment
+ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:49:9-52:20
+	android:label
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:51:13-62
+	android:name
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:50:13-39
+activity#com.example.sakai.Gradebook
+ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:53:9-56:20
+	android:label
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:55:13-61
+	android:name
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:54:13-38
+activity#com.example.sakai.AnnouncementContext
+ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:57:9-60:20
+	android:label
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:59:13-72
+	android:name
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:58:13-48
+service#com.example.sakai.download
+ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:62:9-65:19
+	android:exported
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:64:13-37
+	android:name
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:63:13-37
+activity#com.example.sakai.AssignmentDetail
+ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:67:9-70:20
+	android:label
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:69:13-69
+	android:name
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:68:13-45
+service#com.example.sakai.PollService
+ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:72:9-76:19
+	android:enabled
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:74:13-35
+	android:exported
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:75:13-36
+	android:name
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:73:13-40
+receiver#com.example.sakai.PollReceiver
+ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:78:9-82:20
+	android:enabled
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:80:13-35
+	android:exported
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:81:13-36
+	android:name
+		ADDED from E:\Android\sakaiApp\sakai\sakai-file\app\src\main\AndroidManifest.xml:79:13-41
